@@ -11,83 +11,81 @@ import java.net.http.HttpResponse;
 import java.util.Scanner;
 
 public class ConverteMoeda {
-    public Moedas Converter(String moedaBase, String moedaAlvo){
+    public Moedas Converter(String moedaBase, String moedaAlvo) {
         String chave = "ef43c38f0b040630afaceea2";
         int opcaoMenu = 0;
         double valorDinheiro = 0;
 
         Scanner leitura = new Scanner(System.in);
         opcaoMenu = leitura.nextInt();
+        System.out.println("Digite o valor: ");
+        valorDinheiro = leitura.nextDouble();
 
         try {
-           if (opcaoMenu > 0 && opcaoMenu < 7) {
-                    System.out.println("Digite o valor: ");
-                    valorDinheiro = leitura.nextDouble();
-                }
+            if (opcaoMenu > 0 && opcaoMenu < 9) {
                 switch (opcaoMenu) {
-                    case 1:
-                        moedaBase = "USD";
-                        moedaAlvo = "ARS";
-                        break;
+                        case 1:
+                            moedaBase = "USD";
+                            moedaAlvo = "ARS";
+                            break;
 
-                    case 2:
-                        moedaBase = "ARS";
-                        moedaAlvo = "USD";
-                        break;
+                        case 2:
+                            moedaBase = "ARS";
+                            moedaAlvo = "USD";
+                            break;
 
-                    case 3:
-                        moedaBase = "USD";
-                        moedaAlvo = "BRL";
-                        break;
+                        case 3:
+                            moedaBase = "USD";
+                            moedaAlvo = "BRL";
+                            break;
 
-                    case 4:
-                        moedaBase = "BRL";
-                        moedaAlvo = "USD";
-                        break;
+                        case 4:
+                            moedaBase = "BRL";
+                            moedaAlvo = "USD";
+                            break;
 
-                    case 5:
-                        moedaBase = "USD";
-                        moedaAlvo = "COP";
-                        break;
+                        case 5:
+                            moedaBase = "USD";
+                            moedaAlvo = "COP";
+                            break;
 
-                    case 6:
-                        moedaBase = "COP";
-                        moedaAlvo = "USD";
-                        break;
+                        case 6:
+                            moedaBase = "COP";
+                            moedaAlvo = "USD";
+                            break;
 
-                    case 7:
-                        Menu opcaoMoedas = new Menu();
-                        Scanner resposta = new Scanner(System.in);
-                        System.out.println(opcaoMoedas.getListaMoedas());
-                        System.out.println("Digite a moeda Base: ");
-                        moedaBase = resposta.nextLine();
-                        System.out.println("Digite a moeda Alvo: ");
-                        moedaAlvo = resposta.nextLine();
-                        System.out.println("Digite o valor da moeda Base: ");
-                        valorDinheiro = resposta.nextDouble();
-                        break;
+                        case 7:
+                            Menu opcaoMoedas = new Menu();
+                            Scanner resposta = new Scanner(System.in);
+                            System.out.println(opcaoMoedas.getListaMoedas());
+                            System.out.println("Digite a moeda Base: ");
+                            moedaBase = resposta.nextLine();
+                            System.out.println("Digite a moeda Alvo: ");
+                            moedaAlvo = resposta.nextLine();
+                            break;
 
-                    case 8:
-                        System.out.println("Programa encerrado!");
-                        System.exit(0);
-                        break;
+                        case 8:
+                            System.out.println("Programa encerrado!");
+                            System.exit(0);
 
-                    default:
-                        System.out.println("Valor inválido, informe novamente");
-                }
+                        default:
+                            System.out.println("Valor inválido, informe novamente");
+                    }
 
-                URI conversao = URI.create("https://v6.exchangerate-api.com/v6/" + chave + "/pair/" + moedaBase + "/" + moedaAlvo + "/" + valorDinheiro);
 
-                HttpRequest request = HttpRequest.newBuilder()
-                        .uri(conversao)
-                        .build();
+                    URI conversao = URI.create("https://v6.exchangerate-api.com/v6/" + chave + "/pair/" + moedaBase + "/" + moedaAlvo + "/" + valorDinheiro);
 
-                HttpResponse<String> response = HttpClient
-                        .newHttpClient()
-                        .send(request, HttpResponse.BodyHandlers.ofString());
+                    HttpRequest request = HttpRequest.newBuilder()
+                            .uri(conversao)
+                            .build();
 
-                System.out.println(response.body());
-                return new Gson().fromJson(response.body(), Moedas.class);
+                    HttpResponse<String> response = HttpClient
+                            .newHttpClient()
+                            .send(request, HttpResponse.BodyHandlers.ofString());
+
+                    System.out.println(response.body());
+                    return new Gson().fromJson(response.body(), Moedas.class);
+            }
 
         } catch (NumberFormatException e) {
             System.out.println("Exceção de formato numérico ");
@@ -100,14 +98,16 @@ public class ConverteMoeda {
             System.out.println("Exceção de Estado Ilegal");
         } catch (NullPointerException e) {
             System.out.println("Exceção de ponteiro nulo");
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("IOException");
-        }catch (InterruptedException e){
+        } catch (InterruptedException e) {
             System.out.println("InterruptedException");
         }
         return null;
+        }
+
     }
-}
+
 
 
 
