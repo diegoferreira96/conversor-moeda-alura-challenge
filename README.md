@@ -1,5 +1,5 @@
 # Conversor de moeda (Desafio Alura Challenge)
-Desafio pratico da alura, desenvolvendo um conversor de moeda utilizando API [Exchangerate API](https://www.exchangerate-api.com/).
+Desafio pratico da alura de desenvolver um conversor de moeda utilizando API [Exchangerate API](https://www.exchangerate-api.com/).
 
 ## Sobre o Autor
 
