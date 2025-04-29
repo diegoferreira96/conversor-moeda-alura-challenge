@@ -15,15 +15,22 @@ public class ConverteMoeda {
         String chave = "ef43c38f0b040630afaceea2";
         int opcaoMenu = 0;
         double valorDinheiro = 0;
-
+        int contador = 0;
         Scanner leitura = new Scanner(System.in);
-        opcaoMenu = leitura.nextInt();
-        System.out.println("Digite o valor: ");
-        valorDinheiro = leitura.nextDouble();
 
-        try {
-            if (opcaoMenu > 0 && opcaoMenu < 9) {
-                switch (opcaoMenu) {
+        while (contador >= 0){
+            try {
+                opcaoMenu = leitura.nextInt();
+
+                if (opcaoMenu == 8) {
+                    System.out.println("Programa encerrado!");
+                    System.exit(0);
+                }
+
+                if (opcaoMenu > 0 && opcaoMenu <= 8) {
+                    System.out.println("Digite o valor: ");
+                    valorDinheiro = leitura.nextDouble();
+                    switch (opcaoMenu) {
                         case 1:
                             moedaBase = "USD";
                             moedaAlvo = "ARS";
@@ -64,12 +71,9 @@ public class ConverteMoeda {
                             moedaAlvo = resposta.nextLine();
                             break;
 
-                        case 8:
-                            System.out.println("Programa encerrado!");
-                            System.exit(0);
-
                         default:
                             System.out.println("Valor inválido, informe novamente");
+                            continue;
                     }
 
 
@@ -85,28 +89,31 @@ public class ConverteMoeda {
 
                     System.out.println(response.body());
                     return new Gson().fromJson(response.body(), Moedas.class);
-            }
+                }
 
-        } catch (NumberFormatException e) {
-            System.out.println("Exceção de formato numérico ");
-            System.out.println(e.getMessage());
-        } catch (IllegalArgumentException e) {
-            System.out.println("Exceção de Argumento Ilegal");
-        } catch (JsonSyntaxException e) {
-            System.out.println("Exceção de sintaxe JSON");
-        } catch (IllegalStateException e) {
-            System.out.println("Exceção de Estado Ilegal");
-        } catch (NullPointerException e) {
-            System.out.println("Exceção de ponteiro nulo");
-        } catch (IOException e) {
-            System.out.println("IOException");
-        } catch (InterruptedException e) {
-            System.out.println("InterruptedException");
+
+            } catch (NumberFormatException e) {
+                System.out.println("Exceção de formato numérico ");
+                System.out.println(e.getMessage());
+            } catch (IllegalArgumentException e) {
+                System.out.println("Exceção de Argumento Ilegal");
+            } catch (JsonSyntaxException e) {
+                System.out.println("Exceção de sintaxe JSON");
+            } catch (IllegalStateException e) {
+                System.out.println("Exceção de Estado Ilegal");
+            } catch (NullPointerException e) {
+                System.out.println("Digite uma opção valida.");
+            } catch (IOException e) {
+                System.out.println("IOException");
+            } catch (InterruptedException e) {
+                System.out.println("InterruptedException");
+            }
+            contador++;
         }
         return null;
-        }
-
     }
+}
+
 
 
 
