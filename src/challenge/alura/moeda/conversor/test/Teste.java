@@ -19,9 +19,9 @@ public class Teste {
         Menu menu = new Menu();
         ConverteMoeda converteMoeda = new ConverteMoeda();
         GerarJson gerarJson = new GerarJson();
-        while (true){
+        do {
             out.println(menu.getMenu());
             gerarJson.geradorArquivoJson(converteMoeda.Converter(moedaBase, moedaAlvo));
-        }
+        } while (true);
    }
 }
