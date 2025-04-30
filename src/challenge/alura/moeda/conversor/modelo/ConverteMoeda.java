@@ -15,11 +15,9 @@ public class ConverteMoeda {
         String chave = "ef43c38f0b040630afaceea2";
         int opcaoMenu = 0;
         double valorDinheiro = 0;
-        int contador = 0;
         Scanner leitura = new Scanner(System.in);
 
-        while (contador >= 0){
-            try {
+        try {
                 opcaoMenu = leitura.nextInt();
 
                 if (opcaoMenu == 8) {
@@ -73,7 +71,7 @@ public class ConverteMoeda {
 
                         default:
                             System.out.println("Valor inválido, informe novamente");
-                            continue;
+                            break;
                     }
 
 
@@ -106,9 +104,7 @@ public class ConverteMoeda {
             } catch (IOException e) {
                 System.out.println("IOException");
             } catch (InterruptedException e) {
-                System.out.println("InterruptedException");
-            }
-            contador++;
+            System.out.println("InterruptedException");
         }
         return null;
     }
