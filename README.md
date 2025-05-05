@@ -7,7 +7,7 @@ Desafio pratico da alura de desenvolver um conversor de moeda utilizando API [Ex
  <sub><b>Diego Ferreira</b></sub></a> <a href="https://github.com/diegoferreira96" title="GitHub">🚀</a>
 
 
-Desenvolvi esse projeto procurando abordar os assuntos da maneira mais simples possível. Orientação a Objetos é um assunto que aprendi no curso da alura nesse projeto utilizei um API de conversão de moeadas.
+Desenvolvi esse projeto procurando abordar os assuntos da maneira mais simples possível. Orientação a Objetos é um assunto que aprendi no curso da alura nesse projeto utilizei um API de conversão de moedas.
 
 ---
 
